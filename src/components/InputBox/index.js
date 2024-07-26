@@ -1,15 +1,54 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { View, StyleSheet, TextInput } from 'react-native';
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+
 
 const InputBox = () => {
+    const [newMessage, setNewMessage] = useState('');
+
+    const onSend = () => {
+        console.warn('sending a new message: ', newMessage);
+
+        setNewMessage('');
+    };
+
     return (
         <View style={styles.container}>
-            <Text>InputBox</Text>
+            {/* Icon */}
+            <AntDesign name="plus" size={20} color="royalblue" />
+
+            {/* Text Input */}
+            <TextInput value={newMessage} onChangeText={setNewMessage} style={styles.input} placeholder="type your message..." />
+
+            {/* Icon */}
+            <MaterialIcons onPress={onSend} style={styles.send} name="send" size={16} color="white" />
         </View>
     )
 };
 
 const styles = StyleSheet.create({
-    container: {},
+    container: {
+        flexDirection: 'row',
+        backgroundColor: 'whitesmoke',
+        padding: 5,
+        paddingHorizontal: 15,
+        alignItems: 'center'
+    },
+    input: {
+        flex: 1,
+        backgroundColor: 'white',
+        paddingHorizontal: 10,
+        marginHorizontal: 10,
+
+        borderRadius: 50,
+        borderColor: 'lightgray',
+        borderWidth: StyleSheet.hairlineWidth
+    },
+    send: {
+        backgroundColor: 'royalblue',
+        borderRadius: 15,
+        overflow: 'hidden',
+    },
     
 });
 
