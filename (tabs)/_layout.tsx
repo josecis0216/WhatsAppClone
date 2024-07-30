@@ -24,15 +24,24 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="explore"
+      {/* <Tabs.Screen
+        name="chat"
         options={{
           title: 'Explore',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
           ),
+          href: null,
+        }}
+      /> */}
+      <Tabs.Screen
+        name="notImplemented"
+        options={{
+          title: 'Not Implemented',
+          href: null,
         }}
       />
     </Tabs>
+
   );
 }
