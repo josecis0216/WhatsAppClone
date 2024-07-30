@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { ImageBackground, StyleSheet, FlatList, KeyboardAvoidingView, Platform } from 'react-native';
+import { useNavigation, useRoute} from '@react-navigation/native';
 import Message from '../components/message';
 import InputBox from '../components/InputBox/index';
 
@@ -7,10 +9,14 @@ import messages from '../../assets/data/messages.json';
 
 
 const ChatScreen = () => {
+    const route = useRoute();
+    const navigation = useNavigation();
+
+    useEffect(() => {
+        navigation.setOptions({ title: route.params.name });
+    }, [route.params.name]);
+
     return (
-        // <KeyboardAvoidingView
-        // behavior={Platform.OS === "ios" ? "padding" : "height"}
-        // style={styles.bg}>
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.bg} >
             <ImageBackground source={bg} style={styles.bg} >
                 <FlatList
