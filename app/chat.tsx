@@ -11,7 +11,7 @@ export default function ChatScreenWindow() {
 
   return (
     <>
-      <Stack.Screen options={{ title: params.name?.toString(), headerLeft: () => <Link href="/"><AntDesign name="left" size={24} color="black" /></Link> }} />
+      <Stack.Screen options={{ headerTitleAlign: 'center', title: params.name?.toString(), headerLeft: () => <Link href="/"><AntDesign name="left" size={24} color="black" /></Link> }} />
       <View style={styles.container}>
         <ChatScreen />
       </View>

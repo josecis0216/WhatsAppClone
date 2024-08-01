@@ -17,15 +17,6 @@ export default function TabLayout() {
         //headerShown: false,
         tabBarHideOnKeyboard: true,
       }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Chats',
-          tabBarIcon: ({ color, size }) => (
-            <AntDesign name="message1" size={size} color={color} />
-          ),
-        }}
-      />
       {/* <Tabs.Screen
         name="chat"
         options={{
@@ -40,6 +31,7 @@ export default function TabLayout() {
         name="status"
         options={{
           title: 'Status',
+          headerTitleAlign: 'center',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="logo-whatsapp" size={size} color={color} />
           ),
@@ -49,8 +41,9 @@ export default function TabLayout() {
         name="calls"
         options={{
           title: 'Calls',
+          headerTitleAlign: 'center',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="logo-whatsapp" size={size} color={color} />
+            <Ionicons name="call-outline" size={size} color={color} />
           ),
         }}
       />
@@ -58,8 +51,19 @@ export default function TabLayout() {
         name="camera"
         options={{
           title: 'Camera',
+          headerTitleAlign: 'center',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="logo-whatsapp" size={size} color={color} />
+            <Ionicons name="camera-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Chats',
+          headerTitleAlign: 'center',
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="message1" size={size} color={color} />
           ),
         }}
       />
@@ -67,16 +71,10 @@ export default function TabLayout() {
         name="settings"
         options={{
           title: 'Settings',
+          headerTitleAlign: 'center',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="logo-whatsapp" size={size} color={color} />
+            <Ionicons name="settings-outline" size={size} color={color} />
           ),
-        }}
-      />
-      <Tabs.Screen
-        name="notImplemented"
-        options={{
-          title: 'Not Implemented',
-          href: null,
         }}
       />
     </Tabs>
