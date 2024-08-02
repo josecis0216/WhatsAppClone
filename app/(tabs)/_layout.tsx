@@ -6,6 +6,7 @@ import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { Entypo } from '@expo/vector-icons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -16,6 +17,8 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         //headerShown: false,
         tabBarHideOnKeyboard: true,
+        headerStyle: { backgroundColor: 'whitesmoke' },
+        tabBarStyle: { backgroundColor: 'whitesmoke' },
       }}>
       {/* <Tabs.Screen
         name="chat"
@@ -64,6 +67,13 @@ export default function TabLayout() {
           headerTitleAlign: 'center',
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="message1" size={size} color={color} />
+          ),
+          headerRight: () => (
+            <Entypo
+            name="new-message"
+            size={18}
+            color={"royalblue"}
+            style={{ marginRight: 15 }} />
           ),
         }}
       />

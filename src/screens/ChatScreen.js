@@ -4,11 +4,14 @@ import InputBox from '../components/InputBox/index';
 
 import bg from '../../assets/images/BG.png';
 import messages from '../../assets/data/messages.json';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 const ChatScreen = () => {
+    const insets = useSafeAreaInsets();
+
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.bg} >
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.bg} KeyboardVerticalOffset={Platform.os === "ios" ? 60 : 90} >
             <ImageBackground source={bg} style={styles.bg} >
                 <FlatList
                     data={messages}
