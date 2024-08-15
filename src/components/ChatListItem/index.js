@@ -1,7 +1,7 @@
 import { Text, View, Image, StyleSheet, Pressable } from "react-native";
 // import { useNavigation } from "@react-navigation/native";
 
-import { Link } from 'expo-router';
+import { Link } from "expo-router";
 
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -11,9 +11,12 @@ const ChatListItem = ({ chat }) => {
   // const navigation = useNavigation();
 
   return (
-    <Link navigate href={{ pathname: '/chat', params: { id: chat.user.id, name: chat.user.name } }} >
-      <Pressable
-        style={styles.container}
+    <Pressable style={styles.container}>
+      <Link
+        href={{
+          pathname: "/chat",
+          params: { id: chat.user.id, name: chat.user.name },
+        }}
       >
         <Image source={{ uri: chat.user.image }} style={styles.image} />
         <View style={styles.content}>
@@ -29,18 +32,18 @@ const ChatListItem = ({ chat }) => {
             {chat.lastMessage.text}
           </Text>
         </View>
-      </Pressable>
-    </Link>
-
+      </Link>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    alignItems: "stretch",
     marginHorizontal: 10,
     marginVertical: 5,
-    width: '95%'
+    height: 60,
   },
   image: {
     width: 60,
@@ -52,6 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderbottomcolor: "lightgray",
+    width: 300,
   },
   row: {
     flexDirection: "row",
@@ -67,7 +71,6 @@ const styles = StyleSheet.create({
 });
 
 export default ChatListItem;
-
 
 // onPress={() => {
 //   navigation.navigate("explore", {
