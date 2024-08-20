@@ -1,40 +1,38 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack, Link } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import { Text } from 'react-native';
-import 'react-native-reanimated';
+import { Stack } from "expo-router";
+import { useFonts } from "expo-font";
 
+import { Amplify } from "aws-amplify";
+import type { WithAuthenticatorProps } from "@aws-amplify/ui-react";
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
+import config from "@/amplifyconfiguration.json";
+Amplify.configure(config);
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
+export function App({ signOut, user }: WithAuthenticatorProps) {
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
 
   if (!loaded) {
     return null;
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <>
+      <button onClick={signOut}>Sign out</button>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         {/* <Stack.Screen name="index" options={{ title: 'Chats', headerShown: false }} /> */}
         <Stack.Screen name="+not-found" />
       </Stack>
-    </ThemeProvider>
+    </>
+
+    // <>
+
+    //   <h1>Hello {user?.username}</h1>
+    //   <button onClick={signOut}>Sign out</button>
+    // </>
   );
 }
+
+export default withAuthenticator(App);
